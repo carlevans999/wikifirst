@@ -1,19 +1,19 @@
 package com.example.wiki.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
 
 @RestController //返回字符串
 //@Controller //返回页面，前后端分离用不到
 public class TestController {
+
+    @Value("${test.wfq:TEST}")
+    private String testwfq;
     @GetMapping("/hello")
     public String hello() {
-        return "Hello get ";
+        return "Hello get " +testwfq;
     }
 
     @PostMapping("/hello")
